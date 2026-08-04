@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+#birthday {
+    display: none;
+}
+
+#startform {
+    z-index: 9999;
+    background-color: #FEB4DC;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: grid;
+    place-items: center;
+    top: 0;
+    left: 0;
+}
+
+#config {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
