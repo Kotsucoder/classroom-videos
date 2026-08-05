@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Betania+Patmos+GDL&family=Homemade+Apple&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="site">
     <div id="startform">
         <form id="teacher_setup">
             <fieldset>
@@ -36,15 +41,22 @@
                 <input type="text" id="birthdayStudent" name="birthdayStudent"><br>
             </div>
             <br>
-
+            <label for="background-color-personalization">Background Color</label>
+            <input type="text" id="background-color-personalization" name="background-color-personalization" value="lavender"><br>
+            <br>
+            <label for="horizontal-rule-personalization">Horizontal Rule Color</label>
+            <input type="text" id="horizontal-rule-personalization" name="horizontal-rule-personalization" value="plum"><br>
+            <br>
+            <p>For available color options, <a href="https://htmlcolorcodes.com/color-names/">see this page</a>. If you know what you're doing, you can also use hex color codes.</p>
             <button id="submit" type="submit">Submit</button>
+            <button type="button" id="resetBtn">Reset Saved Data</button>
         </form>
     </div>
     <button id="config">Edit Personalizations</button>
-    <h1 id="classroom">{Honorific} {Teacher}'s Class</h1>
+    <h1 id="classroom" class="fun-font">{Honorific} {Teacher}'s Class</h1>
     <hr />
     <div id="birthday" class="hidden">
-        <h1 id="happybirthday">Happy Birthday!</h1>
+        <h1 id="happybirthday" class="birthday-font">Happy Birthday!</h1>
         <hr />
     </div>
     <script src="app.js" type="text/javascript"></script>

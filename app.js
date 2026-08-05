@@ -26,17 +26,23 @@ document.getElementById('startform').addEventListener('submit', function(event) 
 
     const formData = new FormData(document.getElementById('teacher_setup'));
     const honorific = formData.get('honorific');
+    localStorage.setItem('honorific', honorific.toString());
     const teacher_name = formData.get('teacher_name');
+    localStorage.setItem('teacher_name', teacher_name.toString());
     const isBirthday = formData.get('birthday');
     const birthdayStudent = formData.get('birthdayStudent');
-
-    console.log("Honorific:", honorific);
-    console.log("Name:", teacher_name);
-    console.log("Celebrating Birthday:", isBirthday);
-    console.log("Birthday Student:", birthdayStudent);
+    const backgroundColorChoice = formData.get('background-color-personalization');
+    localStorage.setItem('background', backgroundColorChoice.toString());
+    const horizontalRuleColor = formData.get('horizontal-rule-personalization');
+    localStorage.setItem('horizontal-rule', horizontalRuleColor.toString());
 
     document.getElementById('classroom').innerHTML = `${honorific} ${teacher_name}'s Class`;
     document.getElementById('happybirthday').innerHTML = `Happy Birthday, ${birthdayStudent}!`
+    document.getElementById('site').style.backgroundColor = backgroundColorChoice.toString();
+    const allRules = document.querySelectorAll('hr');
+    allRules.forEach(rule => {
+        rule.style.borderTop = `4px dashed ${horizontalRuleColor}`;
+    });
 
     if (isBirthday === 'yes') {
         document.getElementById('birthday').classList.remove('hidden');
@@ -44,4 +50,35 @@ document.getElementById('startform').addEventListener('submit', function(event) 
     else {
         document.getElementById('birthday').classList.add('hidden');
     }
+});
+
+const loadHonorific = localStorage.getItem('honorific');
+const loadName = localStorage.getItem('teacher_name');
+const loadBackground = localStorage.getItem('background');
+const loadhr = localStorage.getItem('horizontal-rule');
+
+if (loadHonorific) {
+    // Find the radio button with the matching value and check it
+    const radioToSelect = document.querySelector(`input[name="honorific"][value="${loadHonorific}"]`);
+    if (radioToSelect) {
+        radioToSelect.checked = true;
+    }
+}
+
+if (loadName) {
+    document.getElementById('teacher_name').value = loadName;
+}
+
+if (loadBackground) {
+    document.getElementById('background-color-personalization').value = loadBackground;
+}
+
+if (loadhr) {
+    document.getElementById('horizontal-rule-personalization').value = loadhr;
+}
+
+document.getElementById('resetBtn').addEventListener('click', function() {
+    localStorage.clear();
+    alert('Saved preferences have been reset.');
+    window.location.reload();
 });
