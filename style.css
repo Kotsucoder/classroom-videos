@@ -18,6 +18,18 @@ body {
     position: fixed;
     top: 10px;
     right: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Faint white */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Faint border */
+    border-radius: 12px;
+    backdrop-filter: blur(4px); /* Blurs the background slightly for a frosted glass look */
+    color: inherit; /* Adapts to the page's main text color */
+    opacity: 0.6;
+}
+
+#config:hover {
+    opacity: 1; /* Fully visible on hover */
+    color: #333; /* Darker text on hover */
+    text-decoration: underline;
 }
 
 .hidden {
