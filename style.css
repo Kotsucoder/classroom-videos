@@ -58,3 +58,8 @@ hr {
     width: 80%; /* Keeps it from stretching all the way across */
     margin: 20px auto;
 }
+
+iframe {
+    display: block;
+    margin: auto;
+}
