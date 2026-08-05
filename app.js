@@ -35,10 +35,14 @@ document.getElementById('startform').addEventListener('submit', function(event) 
     localStorage.setItem('background', backgroundColorChoice.toString());
     const horizontalRuleColor = formData.get('horizontal-rule-personalization');
     localStorage.setItem('horizontal-rule', horizontalRuleColor.toString());
+    const textColorChoice = formData.get('text-color-personalization');
+    localStorage.setItem('text-color', textColorChoice.toString());
 
     document.getElementById('classroom').innerHTML = `${honorific} ${teacher_name}'s Class`;
     document.getElementById('happybirthday').innerHTML = `Happy Birthday, ${birthdayStudent}!`
     document.getElementById('site').style.backgroundColor = backgroundColorChoice.toString();
+    document.getElementById('classroom').style.color = textColorChoice.toString();
+    document.getElementById('happybirthday').style.color = textColorChoice.toString();
     const allRules = document.querySelectorAll('hr');
     allRules.forEach(rule => {
         rule.style.borderTop = `4px dashed ${horizontalRuleColor}`;
@@ -56,6 +60,7 @@ const loadHonorific = localStorage.getItem('honorific');
 const loadName = localStorage.getItem('teacher_name');
 const loadBackground = localStorage.getItem('background');
 const loadhr = localStorage.getItem('horizontal-rule');
+const loadTextColor = localStorage.getItem('text-color');
 
 if (loadHonorific) {
     // Find the radio button with the matching value and check it
@@ -75,6 +80,10 @@ if (loadBackground) {
 
 if (loadhr) {
     document.getElementById('horizontal-rule-personalization').value = loadhr;
+}
+
+if (loadTextColor) {
+    document.getElementById('text-color-personalization').value = loadTextColor;
 }
 
 document.getElementById('resetBtn').addEventListener('click', function() {
