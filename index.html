@@ -15,61 +15,62 @@
     <div id="startform">
         <form id="teacher_setup">
             <fieldset>
-                <legend>Honorific</legend>
+                <legend style="text-align: initial;">Honorific</legend>
                 <input type="radio" id="mr" name="honorific" value="Mr." required>
-                <label for="mr">Mr.</label><br>
+                <label for="mr">Mr.</label>
                 <input type="radio" id="ms" name="honorific" value="Ms." required>
-                <label for="ms">Ms.</label><br>
+                <label for="ms">Ms.</label>
                 <input type="radio" id="mrs" name="honorific" value="Mrs." required>
-                <label for="mrs">Mrs.</label><br>
+                <label for="mrs">Mrs.</label>
                 <input type="radio" id="miss" name="honorific" value="Miss." required>
-                <label for="miss">Miss.</label><br>
+                <label for="miss">Miss.</label><br><br>
+                <label for="teacher_name">Teacher's Name</label>
+                <input type="text" id="teacher_name" name="teacher_name" required><br>
             </fieldset>
-            <br>
-            <label for="teacher_name">Teacher's Name</label>
-            <input type="text" id="teacher_name" name="teacher_name" required><br>
             <br>
             <fieldset>
-                <legend>Is anyone celebrating a birthday today?</legend>
+                <legend style="text-align: initial;">Is anyone celebrating a birthday today?</legend>
                 <input type="radio" id="birthdayYes" name="birthday" value="yes" required>
-                <label for="birthdayYes">Yes</label><br>
+                <label for="birthdayYes">Yes</label>
                 <input type="radio" id="birthdayNo" name="birthday" value="no" required checked>
                 <label for="birthdayNo">No</label><br>
+                <div id="birthdayStudentField">
+                    <br><label for="birthdayStudent">Birthday Student:</label>
+                    <input type="text" id="birthdayStudent" name="birthdayStudent" disabled><br>
+                </div>
             </fieldset>
             <br>
-            <div id="birthdayStudentField" class="hidden">
-                <label for="birthdayStudent">Birthday Student:</label>
-                <input type="text" id="birthdayStudent" name="birthdayStudent"><br>
-            </div>
-            <br>
-            <label for="theme">Select Theme</label>
-            <select id="theme" name="theme">
-                <option value="default">Default</option>
-                <option value="custom">Custom</option>
-                <option value="school-bus">School Bus</option>
-                <option value="halloween">Halloween</option>
-                <option value="christmas">Christmas</option>
-                <option value="stallions">Stallions</option>
-                <option value="broncos">Broncos</option>
-                <option value="birthday">Birthday</option>
-                <option value="terminal">Terminal</option>
-                <option value="kotsu">Kotsu</option>
-                <option value="cherry">Cherry Blossom</option>
-                <option value="lions">Lions Clubs</option>
-                <option value="boring">Boring</option>
-                <option value="dark-mode">Dark Boring</option>
-            </select><br>
-            <br>
-            <label for="background-color-personalization">Background Color</label>
-            <input type="text" id="background-color-personalization" name="background-color-personalization" value="lavender" disabled><br>
-            <br>
-            <label for="horizontal-rule-personalization">Horizontal Rule Color</label>
-            <input type="text" id="horizontal-rule-personalization" name="horizontal-rule-personalization" value="plum" disabled><br>
-            <br>
-            <label for="text-color-personalization">Text Color</label>
-            <input type="text" id="text-color-personalization" name="text-color-personalization" value="black" disabled><br>
-            <br>
-            <p>For available color options, <a href="https://htmlcolorcodes.com/color-names/">see this page</a>. If you know what you're doing, you can also use hex color codes.</p>
+            <fieldset>
+                <legend style="text-align: initial;">Personalize Theme</legend>
+                <label for="theme">Select Theme</label>
+                <select id="theme" name="theme">
+                    <option value="default">Default</option>
+                    <option value="custom">Custom</option>
+                    <option value="school-bus">School Bus</option>
+                    <option value="halloween">Halloween</option>
+                    <option value="christmas">Christmas</option>
+                    <option value="stallions">Stallions</option>
+                    <option value="broncos">Broncos</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="terminal">Terminal</option>
+                    <option value="kotsu">Kotsu</option>
+                    <option value="cherry">Cherry Blossom</option>
+                    <option value="lions">Lions Clubs</option>
+                    <option value="boring">Boring</option>
+                    <option value="dark-mode">Dark Boring</option>
+                </select><br>
+                <br>
+                <label for="background-color-personalization">Background Color</label>
+                <input type="text" id="background-color-personalization" name="background-color-personalization" value="lavender" disabled><br>
+                <br>
+                <label for="horizontal-rule-personalization">Horizontal Rule Color</label>
+                <input type="text" id="horizontal-rule-personalization" name="horizontal-rule-personalization" value="plum" disabled><br>
+                <br>
+                <label for="text-color-personalization">Text Color</label>
+                <input type="text" id="text-color-personalization" name="text-color-personalization" value="black" disabled><br>
+                <br>
+                <p>For available color options, <a href="https://htmlcolorcodes.com/color-names/">see this page</a>. If you know what you're doing, you can also use hex color codes.</p>
+            </fieldset><br>
             <button id="submit" type="submit">Submit</button>
             <button type="button" id="resetBtn">Reset Saved Data</button>
         </form>

@@ -20,14 +20,14 @@ document.getElementById('config').addEventListener('click', function() {
 
 document.getElementById('birthdayYes').addEventListener('change', function() {
     if (document.getElementById('birthdayYes').checked) {
-        document.getElementById('birthdayStudentField').classList.remove('hidden');
+        document.getElementById('birthdayStudent').disabled = false;
         document.getElementById('birthdayStudent').required = true;
     }
 });
 
 document.getElementById('birthdayNo').addEventListener('change', function() {
     if (document.getElementById('birthdayNo').checked) {
-        document.getElementById('birthdayStudentField').classList.add('hidden');
+        document.getElementById('birthdayStudent').disabled = true;
         document.getElementById('birthdayStudent').required = false;
     }
 });
