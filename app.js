@@ -1,6 +1,18 @@
-// document.getElementById('submit').addEventListener('click', function() {
-//     document.getElementById('startform').style.display = 'none';
-// });
+let themes = {};
+
+fetch('themes.csv')
+    .then(response => response.text())
+    .then(text => {
+        const lines = text.split('\n');
+        for(let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+
+            const [name, background, rule, color] = lines[i].split(',');
+            themes[name.trim()] = [background.trim(), rule.trim(), color.trim()];
+        }
+    })
+
+themes["custom"] = ["lavender", "plum", "black"]
 
 document.getElementById('config').addEventListener('click', function() {
     document.getElementById('startform').style.display = 'grid';
@@ -20,9 +32,30 @@ document.getElementById('birthdayNo').addEventListener('change', function() {
     }
 });
 
+document.getElementById('theme').addEventListener('change', function() {
+    const theme = document.getElementById('theme').value;
+    document.getElementById('background-color-personalization').value = themes[theme][0];
+    document.getElementById('horizontal-rule-personalization').value = themes[theme][1];
+    document.getElementById('text-color-personalization').value = themes[theme][2];
+
+    if (theme === 'custom') {
+        document.getElementById('background-color-personalization').disabled = false;
+        document.getElementById('horizontal-rule-personalization').disabled = false;
+        document.getElementById('text-color-personalization').disabled = false;
+    }
+    else {
+        document.getElementById('background-color-personalization').disabled = true;
+        document.getElementById('horizontal-rule-personalization').disabled = true;
+        document.getElementById('text-color-personalization').disabled = true;
+    }
+});
+
 document.getElementById('startform').addEventListener('submit', function(event) {
     event.preventDefault();
     document.getElementById('startform').style.display = 'none';
+    document.getElementById('background-color-personalization').disabled = false;
+    document.getElementById('horizontal-rule-personalization').disabled = false;
+    document.getElementById('text-color-personalization').disabled = false;
 
     const formData = new FormData(document.getElementById('teacher_setup'));
     const honorific = formData.get('honorific');
@@ -31,12 +64,25 @@ document.getElementById('startform').addEventListener('submit', function(event) 
     localStorage.setItem('teacher_name', teacher_name.toString());
     const isBirthday = formData.get('birthday');
     const birthdayStudent = formData.get('birthdayStudent');
+    const themeSelection = formData.get('theme');
     const backgroundColorChoice = formData.get('background-color-personalization');
-    localStorage.setItem('background', backgroundColorChoice.toString());
     const horizontalRuleColor = formData.get('horizontal-rule-personalization');
-    localStorage.setItem('horizontal-rule', horizontalRuleColor.toString());
     const textColorChoice = formData.get('text-color-personalization');
-    localStorage.setItem('text-color', textColorChoice.toString());
+
+    if (themeSelection !== 'custom') {
+        document.getElementById('background-color-personalization').disabled = true;
+        document.getElementById('horizontal-rule-personalization').disabled = true;
+        document.getElementById('text-color-personalization').disabled = true;
+    }
+
+    if (themeSelection === 'custom') {
+        localStorage.setItem('background', backgroundColorChoice.toString());
+        themes["custom"][0] = backgroundColorChoice.toString();
+        localStorage.setItem('horizontal-rule', horizontalRuleColor.toString());
+        themes["custom"][1] = horizontalRuleColor.toString();
+        localStorage.setItem('text-color', textColorChoice.toString());
+        themes["custom"][2] = textColorChoice.toString();
+    }
 
     document.getElementById('classroom').innerHTML = `${honorific} ${teacher_name}'s Class`;
     document.getElementById('happybirthday').innerHTML = `Happy Birthday, ${birthdayStudent}!`
@@ -75,15 +121,15 @@ if (loadName) {
 }
 
 if (loadBackground) {
-    document.getElementById('background-color-personalization').value = loadBackground;
+    themes["custom"][0] = loadBackground;
 }
 
 if (loadhr) {
-    document.getElementById('horizontal-rule-personalization').value = loadhr;
+    themes["custom"][1] = loadhr;
 }
 
 if (loadTextColor) {
-    document.getElementById('text-color-personalization').value = loadTextColor;
+    themes["custom"][2] = loadTextColor;
 }
 
 document.getElementById('resetBtn').addEventListener('click', function() {
