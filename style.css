@@ -2,10 +2,6 @@ body {
     text-align: center;
 }
 
-#birthday {
-    display: none;
-}
-
 #startform {
     z-index: 9999;
     background-color: #FEB4DC;

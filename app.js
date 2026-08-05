@@ -34,4 +34,14 @@ document.getElementById('startform').addEventListener('submit', function(event) 
     console.log("Name:", teacher_name);
     console.log("Celebrating Birthday:", isBirthday);
     console.log("Birthday Student:", birthdayStudent);
+
+    document.getElementById('classroom').innerHTML = `${honorific} ${teacher_name}'s Class`;
+    document.getElementById('happybirthday').innerHTML = `Happy Birthday, ${birthdayStudent}!`
+
+    if (isBirthday === 'yes') {
+        document.getElementById('birthday').classList.remove('hidden');
+    }
+    else {
+        document.getElementById('birthday').classList.add('hidden');
+    }
 });
