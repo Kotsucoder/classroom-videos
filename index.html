@@ -7,8 +7,38 @@
 </head>
 <body>
     <div id="startform">
-        <h1>Welcome</h1>
-        <button id="submit">Submit</button>
+        <form id="teacher_setup">
+            <fieldset>
+                <legend>Honorific</legend>
+                <input type="radio" id="mr" name="honorific" value="Mr.">
+                <label for="mr">Mr.</label><br>
+                <input type="radio" id="ms" name="honorific" value="Ms.">
+                <label for="ms">Ms.</label><br>
+                <input type="radio" id="mrs" name="honorific" value="Mrs.">
+                <label for="mrs">Mrs.</label><br>
+                <input type="radio" id="miss" name="honorific" value="Miss.">
+                <label for="miss">Miss.</label><br>
+            </fieldset>
+            <br>
+            <label for="teacher_name">Teacher's Name</label>
+            <input type="text" id="teacher_name" name="teacher_name"><br>
+            <br>
+            <fieldset>
+                <legend>Is anyone celebrating a birthday today?</legend>
+                <input type="radio" id="birthdayYes" name="birthday" value="yes">
+                <label for="birthdayYes">Yes</label><br>
+                <input type="radio" id="birthdayNo" name="birthday" value="no" checked>
+                <label for="birthdayNo">No</label><br>
+            </fieldset>
+            <br>
+            <div id="birthdayStudentField" class="hidden">
+                <label for="birthdayStudent">Birthday Student:</label>
+                <input type="text" id="birthdayStudent" name="birthdayStudent"><br>
+            </div>
+            <br>
+
+            <button id="submit" type="submit">Submit</button>
+        </form>
     </div>
     <button id="config">Edit Personalizations</button>
     <h1>{Honorific} {Teacher}'s Class</h1>
